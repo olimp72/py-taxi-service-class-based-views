@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>{% extends "base.html" %}
+
+{% block content %}
+  <h1>Car List</h1>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Model</th>
+      <th>Manufacturer</th>
+    </tr>
+    {% for car in car_list %}
+      <tr>
+        <td><a href="{% url 'taxi:car-detail' pk=car.id %}">{{ car.id }}</a></td>
+        <td>{{ car.model }}</td>
+        <td>{{ car.manufacturer.name }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
